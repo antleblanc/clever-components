@@ -1,4 +1,5 @@
 .components-docs
+.idea
 dist
 dist-cdn
 node_modules
