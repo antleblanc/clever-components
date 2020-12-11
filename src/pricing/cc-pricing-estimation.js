@@ -56,7 +56,7 @@ const SKELETON_FOOBAR = [
  * @prop {Array<Zone>} zones - Sets all the zone
  * @prop {String} pricingCurrency - Sets the current pricingCurrency
  *
- * @event {CustomEvent<ExampleInterface>} cc-pricing-estimation:remove-item - Fires XXX whenever YYY.
+ * @event {CustomEvent<ExampleInterface>} cc-pricing-estimation:remove-product - Fires XXX whenever YYY.
  * @slot - The content of the button (text or HTML). If you want an image, please look at the `image` attribute.
  *
  * @cssprop {Color} --cc-loader-color - The color of the animated circle (defaults: `#2653af`).

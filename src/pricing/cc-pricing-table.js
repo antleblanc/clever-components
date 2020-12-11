@@ -3,7 +3,6 @@ import { dispatchCustomEvent } from '../lib/events.js';
 import { i18n } from '../lib/i18n.js';
 import '../atoms/cc-img.js';
 
-
 /**
  * A component doing X and Y (one liner description of your component).
  *
@@ -74,6 +73,45 @@ export class CcPricingTable extends LitElement {
     super();
     this.error = false;
     this.skeleton = false;
+  }
+
+  _getFeatureName (featureCode) {
+    switch (featureCode) {
+      case 'backup':
+        return i18n('cc-pricing-table.feature.backup');
+      case 'connection-limit':
+        return i18n('cc-pricing-table.feature.connection-limit');
+      case 'cpu':
+        return i18n('cc-pricing-table.feature.cpu');
+      case 'database':
+        return i18n('cc-pricing-table.feature.database');
+      case 'disk-size':
+        return i18n('cc-pricing-table.feature.disk-size');
+      case 'encryption':
+        return i18n('cc-pricing-table.featutre.encryption');
+      case 'isolation':
+        return i18n('cc-pricing-table.feature.isolation');
+      case 'logs':
+        return i18n('cc.pricing-table.feature.logs');
+      case 'max-db-size':
+        return i18n('cc.pricing-table.feature.max-db-size');
+      case 'memory':
+        return i18n('cc.pricing-table.feature.memory');
+      case 'metrics':
+        return i18n('cc.pricing-table.feature.metrics');
+      case 'migration':
+        return i18n('cc.pricing-table.feature.migration');
+      case 'mount':
+        return i18n('cc.pricing-table.feature.mount');
+      case 'node':
+        return i18n('cc.pricing-table.feature.node');
+      case 'postgis':
+        return i18n('cc.pricing-table.feature.postgis');
+      case 'type-shared':
+        return i18n('cc.pricing-table.feature.type-shared');
+      case 'version':
+        return i18n('cc.pricing-table.feature.version');
+    }
   }
 
   /**

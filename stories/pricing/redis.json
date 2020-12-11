@@ -184,22 +184,28 @@
     ],
     "features": [
       {
-        "name": "Isolation"
+        "name": "Isolation",
+        "code": "isolation"
       },
       {
-        "name": "Type"
+        "name": "Type",
+        "code": "type-shared"
       },
       {
-        "name": "Databases"
+        "name": "Databases",
+        "code": "database"
       },
       {
-        "name": "CPU"
+        "name": "CPU",
+        "code": "cpu"
       },
       {
-        "name": "Connection limit"
+        "name": "Connection limit",
+        "code": "connection-limit"
       },
       {
-        "name": "Size"
+        "name": "Size",
+        "code": "disk-size"
       }
     ]
 }
