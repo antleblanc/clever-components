@@ -161,9 +161,6 @@ export class CcPricingPage extends LitElement {
     <div class="products">
       ${this._renderProducts()}
     </div>
-    <div>
-        ${this.selectedProducts.map((p) => html`<div>${p.productName} : ${p.item.name}</div>`)}
-    </div>
     <div class="estimation">
        Estimation 
         <cc-pricing-estimation
