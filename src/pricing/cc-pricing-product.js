@@ -1,6 +1,5 @@
 import { css, html, LitElement } from 'lit-element';
 import { dispatchCustomEvent } from '../lib/events.js';
-import { i18n } from '../lib/i18n.js';
 import '../atoms/cc-img.js';
 import './cc-pricing-table.js';
 
@@ -80,7 +79,7 @@ export class CcPricingProduct extends LitElement {
 
   // If you listen to an event in your `render()` function,
   // use a private method to handle the event and prefix it with `_on`.
-  _onAddProduct ({detail: item}) {
+  _onAddProduct ({ detail: item }) {
     const product = this.title;
     dispatchCustomEvent(this, 'add-product', { productName: product, item });
   }
@@ -106,14 +105,14 @@ export class CcPricingProduct extends LitElement {
       // language=CSS
       css`
         :host {
+          box-shadow: 0 0 0.5rem #aaa;
           display: grid;
           gap: 1rem;
-          box-shadow: 0 0 0.5rem #aaa;
         } 
         
         .head {
-          display: flex;
           align-items: center;
+          display: flex;
           padding: 1rem 1rem 0 1rem;
         }
         
@@ -127,10 +126,10 @@ export class CcPricingProduct extends LitElement {
         }
         
         cc-img {
-          height: 3rem;
-          width: 3rem;
           border-radius: 0.25rem;
+          height: 3rem;
           margin-right: 1rem;
+          width: 3rem;
         }
         
       `,

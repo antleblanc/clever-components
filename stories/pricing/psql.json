@@ -7,69 +7,72 @@
           {
             "name": "Backups",
             "code":  "backup",
-            "type-slug": "Object",
+            "typeSlug": "object",
             "value": "Daily - 7 Retained",
-            "feature-value": ""
+            "featureValue": ""
           },
           {
             "name": "Max DB size",
             "code": "max-db-size",
-            "type-slug": "bytes",
+            "typeSlug": "bytes",
             "value": "5 GB",
-            "feature-value": 5368709120
+            "featureValue": 5368709120
           },
           {
             "name": "Metrics",
             "code": "metrics",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "PostGIS",
             "code": "postgis",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "Type",
-            "value": "Dedicated"
+            "code": "type-shared",
+            "typeSlug": "boolean-shared",
+            "value": "Dedicated",
+            "featureValue": false
           },
           {
             "name": "vCPUS",
             "code": "cpu",
-            "type-slug": "number",
+            "typeSlug": "number",
             "value": "1",
-            "feature-value": 1
+            "featureValue": 1
           },
           {
             "name": "Logs",
             "code": "logs",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "Max connection limit",
             "code": "connection-limit",
-            "type-slug": "number",
+            "typeSlug": "number",
             "value": "75",
-            "feature-value": 75
+            "featureValue": 75
           },
           {
             "name": "Memory",
             "code": "memory",
-            "type-slug": "bytes",
+            "typeSlug": "bytes",
             "value": "1 GB",
-            "feature-value": 1073741824
+            "featureValue": 1073741824
           },
           {
             "name": "Migration Tool",
             "code": "migration",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           }
         ]
       },
@@ -80,74 +83,74 @@
           {
             "name": "Backups",
             "code": "backup",
-            "type-slug": "object",
+            "typeSlug": "object",
             "value": "Daily - 7 Retained",
-            "feature-value": ""
+            "featureValue": ""
           },
           {
             "name": "Logs",
             "code": "logs",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "Max DB size",
             "code": "max-db-size",
-            "type-slug": "bytes",
+            "typeSlug": "bytes",
             "value": "1 GB",
-            "feature-value": 1073741824
+            "featureValue": 1073741824
 
           },
           {
             "name": "Migration Tool",
             "code": "migration",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "PostGIS",
             "code": "postgis",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
 
           },
           {
             "name": "Type",
             "code": "type-shared",
-            "type-slug": "boolean-shared",
+            "typeSlug": "boolean-shared",
             "value": "Dedicated",
-            "feature-value": false
+            "featureValue": false
           },
           {
             "name": "vCPUS",
             "code": "cpu",
-            "type-slug": "number",
+            "typeSlug": "number",
             "value": "1",
-            "feature-value": 1
+            "featureValue": 1
           },
           {
             "name": "Max connection limit",
             "code": "connection-limit",
-            "type-slug": "number",
+            "typeSlug": "number",
             "value": "45",
-            "feature-value": 45
+            "featureValue": 45
           },
           {
             "name": "Metrics",
             "code": "metrics",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "Memory",
             "code": "memory",
-            "type-slug": "bytes",
+            "typeSlug": "bytes",
             "value": "512 MB",
-            "feature-value": 536870912
+            "featureValue": 536870912
           }
         ]
       },
@@ -158,72 +161,72 @@
           {
             "name": "Max DB size",
             "code": "max-db-size",
-            "type-slug": "bytes",
+            "typeSlug": "bytes",
             "value": "80 GB",
-            "feature-value": 85899345920
+            "featureValue": 85899345920
           },
           {
             "name": "vCPUS",
             "code": "cpu",
-            "type-slug": "number",
+            "typeSlug": "number",
             "value": "8",
-            "feature-value": 8
+            "featureValue": 8
           },
           {
             "name": "Max connection limit",
             "code": "connection-limit",
-            "type-slug": "number",
+            "typeSlug": "number",
             "value": "750",
-            "feature-value": 750
+            "featureValue": 750
           },
           {
             "name": "Memory",
             "code": "memory",
-            "type-slug": "bytes",
+            "typeSlug": "bytes",
             "value": "16 GB",
-            "feature-value": 17179869184
+            "featureValue": 17179869184
           },
           {
             "name": "Backups",
             "code": "backup",
-            "type-slug": "object",
+            "typeSlug": "object",
             "value": "Daily - 7 Retained",
-            "feature-value": ""
+            "featureValue": ""
           },
           {
             "name": "Metrics",
             "code": "metrics",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "PostGIS",
             "code": "postgis",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "Type",
             "code": "type-shared",
-            "type-slug": "boolean-shared",
+            "typeSlug": "boolean-shared",
             "value": "Dedicated",
-            "feature-value": false
+            "featureValue": false
           },
           {
             "name": "Logs",
             "code": "logs",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           },
           {
             "name": "Migration Tool",
             "code": "migration",
-            "type-slug": "boolean",
+            "typeSlug": "boolean",
             "value": "Yes",
-            "feature-value": true
+            "featureValue": true
           }
         ]
       }

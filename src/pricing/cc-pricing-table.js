@@ -2,6 +2,7 @@ import { css, html, LitElement } from 'lit-element';
 import { dispatchCustomEvent } from '../lib/events.js';
 import { i18n } from '../lib/i18n.js';
 import '../atoms/cc-img.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 /**
  * A component doing X and Y (one liner description of your component).
@@ -34,8 +35,9 @@ import '../atoms/cc-img.js';
  *
  * ```js
  * interface Feature {
- *   name: string,
- *   ?value: number|string,
+ *   code: string,
+ *   typeSlug: String,
+ *   ?featureValue: number|string,
  * }
  * ```
  * ## Images
@@ -88,43 +90,62 @@ export class CcPricingTable extends LitElement {
       case 'disk-size':
         return i18n('cc-pricing-table.feature.disk-size');
       case 'encryption':
-        return i18n('cc-pricing-table.featutre.encryption');
+        return i18n('cc-pricing-table.feature.encryption');
       case 'isolation':
         return i18n('cc-pricing-table.feature.isolation');
       case 'logs':
-        return i18n('cc.pricing-table.feature.logs');
+        return i18n('cc-pricing-table.feature.logs');
       case 'max-db-size':
-        return i18n('cc.pricing-table.feature.max-db-size');
+        return i18n('cc-pricing-table.feature.max-db-size');
       case 'memory':
-        return i18n('cc.pricing-table.feature.memory');
+        return i18n('cc-pricing-table.feature.memory');
       case 'metrics':
-        return i18n('cc.pricing-table.feature.metrics');
+        return i18n('cc-pricing-table.feature.metrics');
       case 'migration':
-        return i18n('cc.pricing-table.feature.migration');
+        return i18n('cc-pricing-table.feature.migration');
       case 'mount':
-        return i18n('cc.pricing-table.feature.mount');
+        return i18n('cc-pricing-table.feature.mount');
       case 'node':
-        return i18n('cc.pricing-table.feature.node');
+        return i18n('cc-pricing-table.feature.node');
       case 'postgis':
-        return i18n('cc.pricing-table.feature.postgis');
+        return i18n('cc-pricing-table.feature.postgis');
       case 'type-shared':
-        return i18n('cc.pricing-table.feature.type-shared');
-      case 'version':
-        return i18n('cc.pricing-table.feature.version');
+        return i18n('cc-pricing-table.feature.type-shared');
+      case 'mongo-version':
+        return i18n('cc-pricing-table.feature.mongo-version');
+    }
+  }
+
+  _getTypeFormat (typeSlug, value) {
+    switch (typeSlug) {
+      case 'number':
+        return i18n('cc-pricing-table.type.number', { number: value });
+      case 'bytes':
+        return i18n('cc-pricing-table.type.bytes', { bytes: value });
+      case 'boolean':
+        return i18n('cc-pricing-table.type.boolean', { boolean: value });
+      case 'boolean-shared':
+        return i18n('cc-pricing-table.type.boolean-shared', { booleanShared: value });
+      case 'mount':
+        return i18n('cc-pricing-table.type.mount');
+      case 'mongo-version':
+        return i18n('cc-pricing-table.type.mongo-version');
+      case 'object':
+        return 'test-backup';
     }
   }
 
   /**
    * Format every items into a table row with their properties transformed into table data
-   * @returns {Array<html>} returns a formatted array with all the items and their features associated
+   * @returns {Array<TemplateResult>} returns a formatted array with all the items and their features associated
    */
   _renderItems () {
-    return this.items.map((item) => {
+    return this.items.sort((i1, i2) => i1.price - i2.price).map((item) => {
       return html`<tr>
-            <td><button @click=${() => this._onAddItem(item)}>Add</button></td>
+            <td><button @click=${() => this._onAddItem(item)}>${i18n('cc-pricing-table.addButton')}</button></td>
             <td>${item.name}</td>
             ${this._renderItemFeatures(item.features)}
-            <td class="price-item">${i18n('cc-pricing-table.price', { price: item.price })}</td>
+            <td class="number-align">${i18n('cc-pricing-table.price', { price: item.price })}</td>
            </tr>`;
     });
   }
@@ -137,9 +158,17 @@ export class CcPricingTable extends LitElement {
    */
   _renderItemFeatures (itemFeatures) {
     return this.features.map((feature) => {
-      const value = itemFeatures.find((itemFeature) => feature.name === itemFeature.name).value;
-      return html`<td>${value}</td>`;
+      const currentFeature = itemFeatures.find((itemFeature) => feature.code === itemFeature.code);
+      const classes = this._getAlignment(currentFeature.typeSlug);
+      return html`<td class=${classMap(classes)}>${this._getTypeFormat(currentFeature.typeSlug, currentFeature.featureValue)}</td>`;
     });
+  }
+
+  _getAlignment (typeSlug) {
+    if (typeSlug === 'number' || typeSlug === 'bytes') {
+      return { 'number-align': true };
+    }
+    return { 'number-align': false };
   }
 
   // DOCS: 7. Event handlers
@@ -157,8 +186,8 @@ export class CcPricingTable extends LitElement {
         <tr>
             <th></th>
             <th>Plan</th>
-            ${this.features.map((feature) => html`<th>${feature.name}</th>`)}
-            <th>Price</th>
+            ${this.features.map((feature) => html`<th>${this._getFeatureName(feature.code)}</th>`)}
+            <th>${i18n('cc-pricing-table.priceName')}</th>
         </tr> 
             ${this._renderItems()}
      </table>
@@ -189,8 +218,8 @@ export class CcPricingTable extends LitElement {
           background-color: #dddddd;
         }
         
-        .price-item {
-            text-align: right;
+        .number-align {
+          text-align: right;
         }
       `,
     ];
