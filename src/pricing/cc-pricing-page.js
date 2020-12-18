@@ -72,7 +72,7 @@ export class CcPricingPage extends LitElement {
   static get properties () {
     return {
       products: { type: Array },
-      selectedProducts: { type: Array},
+      _selectedProducts: { type: Object },
     };
   }
 
@@ -80,7 +80,7 @@ export class CcPricingPage extends LitElement {
 
   constructor () {
     super();
-    this.selectedProducts = [];
+    this._selectedProducts = {};
   }
 
   // DOCS: 3. Property getters
@@ -120,14 +120,21 @@ export class CcPricingPage extends LitElement {
 
   // DOCS: 6. Private methods
 
-  _onAddProduct ({detail: product}) {
-    console.log(product);
-    this.selectedProducts = [...this.selectedProducts, product];
+  _onAddProduct ({ detail: product }) {
+    const id = `${product.productName}/${product.item.name}`;
+    if (this._selectedProducts[id] == null) {
+      this._selectedProducts[id] = { ...product, quantity: 0 };
+    }
+    this._selectedProducts[id].quantity += 1;
+    this._selectedProducts = { ...this._selectedProducts };
   }
 
-  _onRemoveProduct ({detail: productToRemove}) {
-    console.log('product to be removed ' + productToRemove);
-    this.selectedProducts = this.selectedProducts.filter((p) => p.item.name !== productToRemove.item.name);
+  _onQuantityChanged ({ detail: product }) {
+    const id = `${product.productName}/${product.item.name}`;
+    if (product.quantity <= 0) this._selectedProducts[id] = null;
+    else this._selectedProducts[id].quantity = product.quantity;
+
+    this._selectedProducts = { ...this._selectedProducts };
   }
 
   // It's common to use private methods not to have too much code in `render()`.
@@ -162,10 +169,9 @@ export class CcPricingPage extends LitElement {
       ${this._renderProducts()}
     </div>
     <div class="estimation">
-       Estimation 
         <cc-pricing-estimation
-        .selectedProducts=${this.selectedProducts}
-        @cc-pricing-estimation:remove-product=${this._onRemoveProduct}
+        .selectedProducts=${this._selectedProducts}
+        @cc-pricing-estimation:change-quantity=${this._onQuantityChanged}
         >    
         </cc-pricing-estimation>
     </div>

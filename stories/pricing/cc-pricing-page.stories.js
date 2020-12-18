@@ -4,7 +4,6 @@ import { makeStory, storyWait } from '../lib/make-story.js';
 import { enhanceStoriesNames } from '../lib/story-names.js';
 import * as productList from './products.json';
 
-
 export default {
   title: '$ pricing/<cc-pricing-page>',
   // This component name is used by Storybook's docs page for the API table.
@@ -28,7 +27,7 @@ const conf = {
 // You can set several instances/items to show different situations
 // but no need to get exhaustive or too detailed ;-)
 export const defaultStory = makeStory(conf, {
-  items: [{products: productList.products}],
+  items: [{ products: productList.products }],
 });
 
 // If your component contains remote data,
