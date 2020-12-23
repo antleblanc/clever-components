@@ -121,7 +121,7 @@ export class CcPricingPage extends LitElement {
   // DOCS: 6. Private methods
 
   _onAddProduct ({ detail: product }) {
-    const id = `${product.productName}/${product.item.name}`;
+    const id = product.item.id;
     if (this._selectedProducts[id] == null) {
       this._selectedProducts[id] = { ...product, quantity: 0 };
     }
@@ -130,7 +130,7 @@ export class CcPricingPage extends LitElement {
   }
 
   _onQuantityChanged ({ detail: product }) {
-    const id = `${product.productName}/${product.item.name}`;
+    const id = product.item.id;
     if (product.quantity <= 0) this._selectedProducts[id] = null;
     else this._selectedProducts[id].quantity = product.quantity;
 

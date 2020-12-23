@@ -1,6 +1,7 @@
 {
   "plans": [
     {
+      "id" : "plan_964e2ebf-5606-471f-8ec7-7f79264015d9",
       "name": "S",
       "price": 8.67,
       "features": [
@@ -98,6 +99,7 @@
       ]
     },
     {
+      "id" : "plan_524805d6-d1e2-470b-a849-1e689c1958ca",
       "name": "XL",
       "price": 78.08,
       "features": [
