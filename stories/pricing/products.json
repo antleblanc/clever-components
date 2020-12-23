@@ -6,6 +6,7 @@
       "description": "Hey, i'm psql addon",
       "items": [
         {
+          "id" : "plan_f14478be-b59a-4f64-870c-6887c561492d",
           "name": "XS Small Space",
           "price": 17.5,
           "features": [
@@ -82,6 +83,7 @@
           ]
         },
         {
+          "id" : "plan_c32d00fb-6c06-48a9-a0a3-9d808937ec68",
           "name": "XXS Small Space",
           "price": 5.25,
           "features": [
@@ -158,6 +160,7 @@
           ]
         },
         {
+          "id" : "plan_9b4505e7-ac36-4caa-ac7d-9e11b6a26b15",
           "name": "XL Small Space",
           "price": 328,
           "features": [
@@ -293,6 +296,7 @@
       "description": "Hey, i'm redis addon",
       "items": [
         {
+          "id" : "plan_964e2ebf-5606-471f-8ec7-7f79264015d9",
           "name": "S",
           "price": 8.67,
           "features": [
@@ -390,6 +394,7 @@
           ]
         },
         {
+          "id" : "plan_524805d6-d1e2-470b-a849-1e689c1958ca",
           "name": "XL",
           "price": 78.08,
           "features": [

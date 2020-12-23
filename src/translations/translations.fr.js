@@ -41,7 +41,7 @@ const formatDatetime = prepareFormatDatetime(lang);
 const formatDateOnly = prepareFormatDateOnly(lang);
 const formatHours = prepareFormatHours(lang);
 
-const currencyFormatter = new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR' });
+const currencyFormatter = new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR', currencyDisplay: 'narrowSymbol' });
 const percentFormatter = new Intl.NumberFormat(lang, {
   style: 'percent',
   minimumFractionDigits: 1,
