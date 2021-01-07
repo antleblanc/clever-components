@@ -3,6 +3,7 @@
 // DOCS: Always keep the ".js" at the end when you reference a file directly [error in ESLint].
 // DOCS: We enforce import order [fixed by ESLint].
 import { css, html, LitElement } from 'lit-element';
+import {i18n} from "../lib/i18n";
 
 // DOCS: You may setup/init some stuffs here but this should be rare and most of the setup should happen in the component.
 const MY_AWESOME_CONST = 'foobar';
@@ -68,7 +69,9 @@ export class CcPricingHeader extends LitElement {
 
   static get properties () {
     return {
-      currencies: { type: Object },
+      _currencies: { type: Array },
+      pricingCurrency: { type: String },
+      selectedProducts: { type: Object },
     };
   }
 
@@ -76,10 +79,16 @@ export class CcPricingHeader extends LitElement {
 
   constructor () {
     super();
-    // Init default values for a clean component and for auto generated documentation.
-    this.one = '';
-    this.two = false;
-    // You don't need to init everything, there are lots of valid use of default nullish properties.
+    /** We use an object with the codes that we choose to support as we use the ```Intl.Numberformat()``` function
+     /* to format the prices which use the code so we don't need the symbol
+     * So we don't the symbol
+     */
+    this._currencies = [
+      { code: 'EUR', displayValue: '€ EUR' },
+      { code: 'GBP', displayValue: '£ GBP' },
+      { code: 'USD', displayValue: '$ USD' },
+    ];
+    this.selectedProducts = {};
   }
 
   // DOCS: 3. Property getters
@@ -125,6 +134,14 @@ export class CcPricingHeader extends LitElement {
     // Do something
   }
 
+  _getTotalPrice () {
+    let totalPrice = 0;
+    for (const p of Object.values(this.selectedProducts)) {
+      if (p != null) totalPrice += p.item.price * p.quantity;
+    }
+    return totalPrice;
+  }
+
   // DOCS: 7. Event handlers
 
   // If you listen to an event in your `render()` function,
@@ -160,10 +177,20 @@ export class CcPricingHeader extends LitElement {
   // All UI components will need this function to describe the "HTML template".
   render () {
 
-    // Prepare booleans and format stuffs here
-
     return html`
-      <div>This is <code>cc-example-component</code></div>
+      <!-- To translate -->
+      <div class="header">
+        <div class="select-currency">
+          Currency :
+          <select>
+            ${this._currencies.map((c) => html`<option value=${c.code}>${c.displayValue}</option>`)}
+          </select>
+        </div>
+        <div class="est-cost">
+          Estimated cost:
+          ${i18n('cc-pricing-estimation.price', { price: this._getTotalPrice() })}
+        </div>
+      </div>
     `;
   }
 
@@ -178,6 +205,17 @@ export class CcPricingHeader extends LitElement {
         :host {
           /* You may use another display type but you need to define one. */
           display: block;
+          margin-bottom: 1.5rem;
+          background-color: #FFFAFA;
+          box-shadow: 0 0 0.5rem #aaa;
+          padding: 1rem;
+          wdith: 100%;
+        }
+        
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
       `,
     ];

@@ -99,8 +99,13 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
         return html`
           <tr>
             <td>
-              <button @click=${() => this._onChangeQuantity(p, 'remove')}>+</button>
-              <button @click=${() => this._onChangeQuantity(p, 'add')}>-</button>
+              <button class="change-qt-btn"  @click=${() => this._onChangeQuantity(p, 'add')}>
+                <img src=${new URL('../assets/add-button.svg', import.meta.url).href} />
+              </button>
+              <button class="change-qt-btn"  @click=${() => this._onChangeQuantity(p, 'remove')}>
+                <img src=${new URL('../assets/remove-button.svg', import.meta.url).href} />
+              </button>
+
             </td>
             <td>${p.productName}</td>
             <td>${p.item.name}</td>
@@ -122,10 +127,9 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
 
   _onChangeQuantity (product, action) {
     if (action === 'remove') {
-      dispatchCustomEvent(this, 'change-quantity', { ...product, quantity: product.quantity + 1 });
-    }
-    else if (action === 'add') {
       dispatchCustomEvent(this, 'change-quantity', { ...product, quantity: product.quantity - 1 });
+    } else if (action === 'add') {
+      dispatchCustomEvent(this, 'change-quantity', { ...product, quantity: product.quantity + 1 });
     }
   }
 
@@ -170,6 +174,7 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
           /* You may use another display type but you need to define one. */
           display: block;
         }
+        
         table {
           border-collapse: collapse;
           border-spacing: 0;
@@ -252,9 +257,30 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
           margin-right: 0.2rem;
         }
 
-
         .price-item {
           text-align: right;
+        }
+
+
+        .change-qt-btn {
+          border: none;
+          background: transparent;
+        }
+
+        .change-qt-btn img {
+          width: 32px;
+          height: 32px;
+          -webkit-filter: brightness(100%);
+        }
+
+        .change-qt-btn img:hover {
+          -webkit-filter: brightness(50%);
+          -webkit-transition: all 0.75s ease;
+          -moz-transition: all 0.75s ease;
+          -o-transition: all 0.75s ease;
+          -ms-transition: all 0.75s ease;
+          transition: all 0.75s ease;
+          cursor: pointer;
         }
       `,
     ];

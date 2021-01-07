@@ -3,6 +3,7 @@
 // DOCS: Always keep the ".js" at the end when you reference a file directly [error in ESLint].
 // DOCS: We enforce import order [fixed by ESLint].
 import { css, html, LitElement } from 'lit-element';
+import './cc-pricing-header.js';
 import './cc-pricing-product.js';
 import './cc-pricing-estimation.js';
 import { dispatchCustomEvent } from '../lib/events.js';
@@ -147,17 +148,17 @@ export class CcPricingPage extends LitElement {
   _renderProducts () {
     return this.products.map((p) => {
       return html`
-      <div>
-        <cc-pricing-product
-          title=${p.title}
-          icon=${p.icon}
-          description=${p.description}
-          .items=${p.items}
-          .features=${p.features}
-          @cc-pricing-product:add-product=${this._onAddProduct}
-        >
-        </cc-pricing-product>
-      </div>
+        <div>
+          <cc-pricing-product
+              title=${p.title}
+              icon=${p.icon}
+              description=${p.description}
+              .items=${p.items}
+              .features=${p.features}
+              @cc-pricing-product:add-product=${this._onAddProduct}
+          >
+          </cc-pricing-product>
+        </div>
       `;
     });
   }
@@ -165,16 +166,20 @@ export class CcPricingPage extends LitElement {
   render () {
 
     return html`
-    <div class="products">
-      ${this._renderProducts()}
-    </div>
-    <div class="estimation">
+      <div class="header">
+        <cc-pricing-header .selectedProducts=${this._selectedProducts}>
+        </cc-pricing-header>
+      </div>
+      <div class="products">
+        ${this._renderProducts()}
+      </div>
+      <div class="estimation">
         <cc-pricing-estimation
-        .selectedProducts=${this._selectedProducts}
-        @cc-pricing-estimation:change-quantity=${this._onQuantityChanged}
-        >    
+            .selectedProducts=${this._selectedProducts}
+            @cc-pricing-estimation:change-quantity=${this._onQuantityChanged}
+        >
         </cc-pricing-estimation>
-    </div>
+      </div>
     `;
   }
 
@@ -190,7 +195,7 @@ export class CcPricingPage extends LitElement {
           /* You may use another display type but you need to define one. */
           display: block;
         }
-        
+
         .products div {
           margin-bottom: 0.5rem;
         }
