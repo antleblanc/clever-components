@@ -56,7 +56,7 @@ const SKELETON_FOOBAR = [
  *
  * @prop {Zone} selectedZone - Sets the zone selected for the items
  * @prop {Array<Zone>} zones - Sets all the zone
- * @prop {String} pricingCurrency - Sets the current pricingCurrency
+ * @prop {String} currency - Sets the current currency code
  *
  * @event {CustomEvent<ExampleInterface>} cc-pricing-estimation:change-quantity - Fires XXX whenever YYY.
  * @slot - The content of the button (text or HTML). If you want an image, please look at the `image` attribute.
@@ -70,6 +70,7 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
   static get properties () {
     return {
       selectedProducts: { type: Object },
+      currency: { type: String },
     };
   }
 
@@ -82,6 +83,7 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
     this.breakpoints = {
       width: [600],
     };
+    this.currency = 'EUR';
   }
 
   /**
@@ -110,7 +112,7 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
             <td>${p.productName}</td>
             <td>${p.item.name}</td>
             <td>${p.quantity}</td>
-            <td class="price-item">${i18n('cc-pricing-table.price', { price: p.item.price * p.quantity })}</td>
+            <td class="price-item">${i18n('cc-pricing-table.price', { price: p.item.price * p.quantity, code: this.currency })}</td>
           </tr>
         `;
       }
@@ -153,7 +155,7 @@ export class CcPricingEstimation extends withResizeObserver(LitElement) {
 
       <div class="recap">
         <div class="monthly-est">${i18n('cc-pricing-estimation.monthly-est')}:</div>
-        <div class="cost-price"> ${i18n('cc-pricing-estimation.price', { price: this._getTotalPrice() })} </div>
+        <div class="cost-price"> ${i18n('cc-pricing-estimation.price', { price: this._getTotalPrice(), code: this.currency })} </div>
         <div class="recap-buttons">
           <cc-button class="contact-sales">${i18n('cc-pricing-estimation.sales')}</cc-button>
           <cc-button class="sign-up" outlined>${i18n('cc-pricing-estimation.sign-up')}</cc-button>

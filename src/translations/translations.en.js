@@ -29,6 +29,11 @@ const formatDateOnly = prepareFormatDateOnly(lang);
 const formatHours = prepareFormatHours(lang);
 
 const currencyFormatter = new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR' });
+
+function currencyFormatterCode (code) {
+  return new Intl.NumberFormat(lang, { style: 'currency', currency: code, currencyDisplay: 'narrowSymbol' });
+}
+
 const percentFormatter = new Intl.NumberFormat(lang, {
   style: 'percent',
   minimumFractionDigits: 1,
@@ -366,7 +371,7 @@ export const translations = {
   'cc-zone-input.error': `Something went wrong while loading zones.`,
   'cc-zone-input.private-map-warning': `Private zones don't appear on the map.`,
   // cc-pricing-table
-  'cc-pricing-table.price': ({ price }) => `${currencyFormatter.format(price)}`,
+  'cc-pricing-table.price': ({ price, code }) => `${currencyFormatterCode(code).format(price)}`,
   'cc-pricing-table.priceName': `Price`,
   'cc-pricing-table.addButton': 'Add',
   // -> Feature name translation
@@ -399,8 +404,12 @@ export const translations = {
   'cc-pricing-estimation.size': `Size`,
   'cc-pricing-estimation.quantity': `Quantity`,
   'cc-pricing-estimation.priceName': `Price`,
-  'cc-pricing-estimation.price': ({ price }) => `${currencyFormatter.format(price)}`,
+  'cc-pricing-estimation.price': ({ price, code }) => `${currencyFormatterCode(code).format(price)}`,
   'cc-pricing-estimation.monthly-est': `Est. Monthly Cost`,
   'cc-pricing-estimation.sales': `Contact Sales`,
   'cc-pricing-estimation.sign-up': `Sign Up`,
+  // cc-pricing-header
+  'cc-pricing-header.currency-text': 'Currency',
+  'cc-pricing-header.est-cost': 'Estimated Cost',
+  'cc-pricing-header.price': ({ price, code }) => `${currencyFormatterCode(code).format(price)}`,
 };

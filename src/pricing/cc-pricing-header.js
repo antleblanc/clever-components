@@ -1,19 +1,6 @@
-// DOCS: Don't add a 'use strict', no need for them in modern JS modules.
-// DOCS: Put all imports here.
-// DOCS: Always keep the ".js" at the end when you reference a file directly [error in ESLint].
-// DOCS: We enforce import order [fixed by ESLint].
 import { css, html, LitElement } from 'lit-element';
-import {i18n} from "../lib/i18n";
-
-// DOCS: You may setup/init some stuffs here but this should be rare and most of the setup should happen in the component.
-const MY_AWESOME_CONST = 'foobar';
-
-// DOCS: You may setup/init constant data used when component is in skeleton state.
-const SKELETON_FOOBAR = [
-  { foo: '???????' },
-  { foo: '????' },
-  { foo: '???????' },
-];
+import { dispatchCustomEvent } from '../lib/events.js';
+import { i18n } from '../lib/i18n.js';
 
 /**
  * A component doing X and Y (one liner description of your component).
@@ -65,73 +52,59 @@ const SKELETON_FOOBAR = [
  */
 export class CcPricingHeader extends LitElement {
 
-  // DOCS: 1. LitElement's properties descriptor
-
   static get properties () {
     return {
       _currencies: { type: Array },
       pricingCurrency: { type: String },
       selectedProducts: { type: Object },
+      currency: { type: String },
+      zones: { type: Array },
     };
   }
-
-  // DOCS: 2. Constructor
 
   constructor () {
     super();
     /** We use an object with the codes that we choose to support as we use the ```Intl.Numberformat()``` function
-     /* to format the prices which use the code so we don't need the symbol
-     * So we don't the symbol
-     */
+         * to format the prices which use the code so we don't need the symbol
+         */
     this._currencies = [
       { code: 'EUR', displayValue: '€ EUR' },
       { code: 'GBP', displayValue: '£ GBP' },
       { code: 'USD', displayValue: '$ USD' },
     ];
+    this.currency = 'EUR';
     this.selectedProducts = {};
-  }
-
-  // DOCS: 3. Property getters
-
-  // Use the underscore prefix convention to store the value in the getter/setter.
-  // You probably don't need this if you didn't add a setter.
-  get one () {
-    return this._one;
-  }
-
-  // DOCS: 4. Property setters
-
-  // LitElement automatically creates getters/setters for your properties described in `static get properties ()`.
-  // If you need a setter to hook into a property,
-  // you will need to call LitElement's `this.requestUpdate('propName', oldVal)` to maintain the auto render mechanism.
-  // Use the underscore prefix convention to store the value in the getter/setter.
-  set one (newVal) {
-    const oldVal = this._one;
-    this._one = newVal;
-    this.requestUpdate('one', oldVal);
-    // Do something
-  }
-
-  // DOCS: 5. Public methods
-
-  // It's rare, but your component may need to expose methods.
-  // Native DOM elements have methods to focus, submit form...
-  // Use JSDoc to document your method.
-  /**
-   * Documentation of this awesome method.
-   * @param {String} foo - Docs for foo.
-   * @param {Boolean} bar - Docs for bar.
-   */
-  publicMethod (foo, bar) {
-    // Do something
-  }
-
-  // DOCS: 6. Private methods
-
-  // It's common to use private methods not to have too much code in `render()`.
-  // We often use this for i18n multiple cases.
-  _privateMethod () {
-    // Do something
+    // TODO: Temp to change default array
+    this.zones = [
+      {
+        name: 'mtl',
+        country: 'Canada',
+        countryCode: 'CA',
+        city: 'Montreal',
+        lat: 45.50,
+        lon: -73.61,
+        tags: ['infra:ovh'],
+      },
+      {
+        name: 'acme-corp',
+        displayName: 'ACME Corp',
+        country: 'Germany',
+        countryCode: 'DE',
+        city: 'Berlin',
+        lat: 52.52,
+        lon: 13.39,
+        tags: ['region:eu', 'scope:private'],
+      },
+      {
+        name: 'nyc',
+        country: 'United States',
+        countryCode: 'US',
+        city: 'New York City',
+        lat: 40.71,
+        lon: -74.01,
+        tags: ['infra:clever-cloud'],
+      },
+    ];
   }
 
   _getTotalPrice () {
@@ -142,86 +115,61 @@ export class CcPricingHeader extends LitElement {
     return totalPrice;
   }
 
-  // DOCS: 7. Event handlers
-
-  // If you listen to an event in your `render()` function,
-  // use a private method to handle the event and prefix it with `_on`.
-  _onSomething () {
-    // Do something
+  _onCurrencyChange (e) {
+    dispatchCustomEvent(this, 'change-currency', e.target.value);
   }
 
-  // DOCS: 8. Custom element lifecycle callbacks
-
-  // It's rare, but you may need to directly into the custom element lifecycle callbacks.
-  // This is useful if you set intervals or listeners.
-  connectedCallback () {
-    super.connectedCallback();
-    // Do something
-  }
-
-  disconnectedCallback () {
-    super.disconnectedCallback();
-    // Do something
-  }
-
-  // DOCS: 9. LitElement lifecycle callbacks
-
-  // If you need to setup some code before the first render, use this.
-  // It's often needed if you component contains DOM managed by a 3rd party (chart, map...).
-  firstUpdated () {
-
-  }
-
-  // DOCS: 10. LitElement's render method
-
-  // All UI components will need this function to describe the "HTML template".
   render () {
 
     return html`
-      <!-- To translate -->
-      <div class="header">
-        <div class="select-currency">
-          Currency :
-          <select>
-            ${this._currencies.map((c) => html`<option value=${c.code}>${c.displayValue}</option>`)}
-          </select>
-        </div>
-        <div class="est-cost">
-          Estimated cost:
-          ${i18n('cc-pricing-estimation.price', { price: this._getTotalPrice() })}
-        </div>
-      </div>
-    `;
+            <div class="header">
+                <div class="select-currency">
+                   ${i18n('cc-pricing-header.currency-text')}:
+                    <select @change=${this._onCurrencyChange}>
+                        ${this._currencies.map((c) => html`
+                            <option value=${c.code}>${c.displayValue}</option>`)}
+                    </select>
+                </div>
+                <div class="zones">
+                  <cc-zone-input
+                    .zones=${this.zones}
+                  >
+                  </cc-zone-input>
+                </div>
+                <div class="est-cost">
+                  ${i18n('cc-pricing-header.est-cost')}:
+                    ${i18n('cc-pricing-header.price', { price: this._getTotalPrice(), code: this.currency })}
+                </div>
+            </div>
+        `;
   }
 
-  // DOCS: 11. LitElement's styles descriptor
-
   static get styles () {
-    // This array may contain style imports from shared files.
-    // Then you can defined your own component's styles.
     return [
       // language=CSS
       css`
-        :host {
-          /* You may use another display type but you need to define one. */
-          display: block;
-          margin-bottom: 1.5rem;
-          background-color: #FFFAFA;
-          box-shadow: 0 0 0.5rem #aaa;
-          padding: 1rem;
-          wdith: 100%;
-        }
-        
-        .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-      `,
+                :host {
+                    /* You may use another display type but you need to define one. */
+                    display: block;
+                    margin-bottom: 1.5rem;
+                    background-color: #FFFAFA;
+                    box-shadow: 0 0 0.5rem #aaa;
+                    padding: 1rem;
+                    wdith: 100%;
+                }
+
+                .zones {
+                    max-width: 550px;
+                }
+
+                .header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            `,
     ];
   }
 }
-
-// DOCS: 12. Define the custom element
 
 window.customElements.define('cc-pricing-header', CcPricingHeader);

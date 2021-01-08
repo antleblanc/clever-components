@@ -52,7 +52,7 @@ import { withResizeObserver } from '../mixins/with-resize-observer.js';
  * @prop { Boolean } skeleton - Enables skeleton screen UI pattern (loading hint).
  * @prop { Array<Item> } items - Sets the data needed for the content of the table
  * @prop { Array<Feature> } features - Sets the feature needed for the table (Act as columns)
- * @prop { String } pricingCurrency - Sets the currency needed (e.g: €)
+ * @prop { String } currency - Sets the currency needed (e.g: €)
  *
  * @event {CustomEvent<ExampleInterface>} cc-pricing-table:add-item - Fires XXX whenever YYY.
  *
@@ -68,7 +68,7 @@ export class CcPricingTable extends withResizeObserver(LitElement) {
       skeleton: { type: Boolean },
       items: { type: Array },
       features: { type: Array },
-      pricingCurrency: { type: String },
+      currency: { type: String },
       _size: { type: String },
     };
   }
@@ -77,6 +77,7 @@ export class CcPricingTable extends withResizeObserver(LitElement) {
     super();
     this.error = false;
     this.skeleton = false;
+    this.currency = 'EUR';
   }
 
   onResize ({ width }) {
@@ -163,7 +164,7 @@ export class CcPricingTable extends withResizeObserver(LitElement) {
             ${this._renderSmallItemFeatures(item.features)}
             <div class="feature">
               <div class="name">Price</div>
-              <div class="number-align">${i18n('cc-pricing-table.price', { price: item.price })}</div>
+              <div class="number-align">${i18n('cc-pricing-table.price', { price: item.price, code: this.currency })}</div>
             </div>
           </div>
         </div>
@@ -197,7 +198,7 @@ export class CcPricingTable extends withResizeObserver(LitElement) {
         </td>
         <td>${item.name}</td>
         ${this._renderBigItemFeatures(item.features)}
-        <td class="number-align">${i18n('cc-pricing-table.price', { price: item.price })}</td>
+        <td class="number-align">${i18n('cc-pricing-table.price', { price: item.price, code: this.currency })}</td>
       </tr>`;
     });
   }
@@ -239,6 +240,7 @@ export class CcPricingTable extends withResizeObserver(LitElement) {
   }
 
   render () {
+    console.log('render-size', this._size);
     if (this._size > 550) {
       return html`
         <table>

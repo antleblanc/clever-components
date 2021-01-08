@@ -66,6 +66,7 @@ export class CcPricingProduct extends LitElement {
       description: { type: String },
       items: { type: Array },
       features: { type: Array },
+      currency: { type: String },
     };
   }
 
@@ -73,6 +74,7 @@ export class CcPricingProduct extends LitElement {
     super();
     this.error = false;
     this.skeleton = false;
+    this.currency = 'EUR';
   }
 
   // DOCS: 7. Event handlers
@@ -95,6 +97,7 @@ export class CcPricingProduct extends LitElement {
      <cc-pricing-table 
      .items=${this.items}
      .features=${this.features}
+     currency=${this.currency}
      @cc-pricing-table:add-item=${this._onAddProduct}
      ></cc-pricing-table>
     `;

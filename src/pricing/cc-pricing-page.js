@@ -74,6 +74,7 @@ export class CcPricingPage extends LitElement {
     return {
       products: { type: Array },
       _selectedProducts: { type: Object },
+      _currency: { type: String },
     };
   }
 
@@ -82,6 +83,7 @@ export class CcPricingPage extends LitElement {
   constructor () {
     super();
     this._selectedProducts = {};
+    this._currency = 'EUR';
   }
 
   // DOCS: 3. Property getters
@@ -138,6 +140,11 @@ export class CcPricingPage extends LitElement {
     this._selectedProducts = { ...this._selectedProducts };
   }
 
+  _onCurencyChanged ({ detail: currency }) {
+    console.log('currency changed with', currency);
+    this._currency = currency;
+  }
+
   // It's common to use private methods not to have too much code in `render()`.
   // We often use this for i18n multiple cases.
   /**
@@ -153,6 +160,7 @@ export class CcPricingPage extends LitElement {
               title=${p.title}
               icon=${p.icon}
               description=${p.description}
+              currency=${this._currency}
               .items=${p.items}
               .features=${p.features}
               @cc-pricing-product:add-product=${this._onAddProduct}
@@ -167,7 +175,11 @@ export class CcPricingPage extends LitElement {
 
     return html`
       <div class="header">
-        <cc-pricing-header .selectedProducts=${this._selectedProducts}>
+        <cc-pricing-header 
+            .selectedProducts=${this._selectedProducts}
+            currency=${this._currency}
+            @cc-pricing-header:change-currency=${this._onCurencyChanged}
+        >
         </cc-pricing-header>
       </div>
       <div class="products">
@@ -176,6 +188,7 @@ export class CcPricingPage extends LitElement {
       <div class="estimation">
         <cc-pricing-estimation
             .selectedProducts=${this._selectedProducts}
+            currency=${this._currency}
             @cc-pricing-estimation:change-quantity=${this._onQuantityChanged}
         >
         </cc-pricing-estimation>
