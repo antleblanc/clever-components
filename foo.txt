@@ -1,0 +1,21 @@
+_getFeatureName (featureCode) {
+    return ({
+      'backup': i18n('cc-pricing-table.feature.backup'),
+      'connection-limit': i18n('cc-pricing-table.feature.connection-limit'),
+      'cpu': i18n('cc-pricing-table.feature.cpu'),
+      'database': i18n('cc-pricing-table.feature.database'),
+      'disk-size': i18n('cc-pricing-table.feature.disk-size'),
+      'encryption': i18n('cc-pricing-table.feature.encryption'),
+      'isolation': i18n('cc-pricing-table.feature.isolation'),
+      'logs': i18n('cc-pricing-table.feature.logs'),
+      'max-db-size': i18n('cc-pricing-table.feature.max-db-size'),
+      'memory': i18n('cc-pricing-table.feature.memory'),
+      'metrics': i18n('cc-pricing-table.feature.metrics'),
+      'migration': i18n('cc-pricing-table.feature.migration'),
+      'mount': i18n('cc-pricing-table.feature.mount'),
+      'node': i18n('cc-pricing-table.feature.node'),
+      'postgis': i18n('cc-pricing-table.feature.postgis'),
+      'type-shared': i18n('cc-pricing-table.feature.type-shared'),
+      'mongo-version': i18n('cc-pricing-table.feature.mongo-version'),
+    })[featureCode];
+  }

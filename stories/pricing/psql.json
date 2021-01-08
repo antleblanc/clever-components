@@ -1,0 +1,289 @@
+{
+    "plans": [
+      {
+        "id" : "plan_f14478be-b59a-4f64-870c-6887c561492d",
+        "name": "XS Small Space",
+        "price": 17.5,
+        "features": [
+          {
+            "name": "Backups",
+            "code":  "backup",
+            "typeSlug": "object",
+            "value": "Daily - 7 Retained",
+            "featureValue": ""
+          },
+          {
+            "name": "Max DB size",
+            "code": "max-db-size",
+            "typeSlug": "bytes",
+            "value": "5 GB",
+            "featureValue": 5368709120
+          },
+          {
+            "name": "Metrics",
+            "code": "metrics",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "PostGIS",
+            "code": "postgis",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "Type",
+            "code": "type-shared",
+            "typeSlug": "boolean-shared",
+            "value": "Dedicated",
+            "featureValue": false
+          },
+          {
+            "name": "vCPUS",
+            "code": "cpu",
+            "typeSlug": "number",
+            "value": "1",
+            "featureValue": 1
+          },
+          {
+            "name": "Logs",
+            "code": "logs",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "Max connection limit",
+            "code": "connection-limit",
+            "typeSlug": "number",
+            "value": "75",
+            "featureValue": 75
+          },
+          {
+            "name": "Memory",
+            "code": "memory",
+            "typeSlug": "bytes",
+            "value": "1 GB",
+            "featureValue": 1073741824
+          },
+          {
+            "name": "Migration Tool",
+            "code": "migration",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          }
+        ]
+      },
+      {
+        "id" : "plan_c32d00fb-6c06-48a9-a0a3-9d808937ec68",
+        "name": "XXS Small Space",
+        "price": 5.25,
+        "features": [
+          {
+            "name": "Backups",
+            "code": "backup",
+            "typeSlug": "object",
+            "value": "Daily - 7 Retained",
+            "featureValue": ""
+          },
+          {
+            "name": "Logs",
+            "code": "logs",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "Max DB size",
+            "code": "max-db-size",
+            "typeSlug": "bytes",
+            "value": "1 GB",
+            "featureValue": 1073741824
+
+          },
+          {
+            "name": "Migration Tool",
+            "code": "migration",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "PostGIS",
+            "code": "postgis",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+
+          },
+          {
+            "name": "Type",
+            "code": "type-shared",
+            "typeSlug": "boolean-shared",
+            "value": "Dedicated",
+            "featureValue": false
+          },
+          {
+            "name": "vCPUS",
+            "code": "cpu",
+            "typeSlug": "number",
+            "value": "1",
+            "featureValue": 1
+          },
+          {
+            "name": "Max connection limit",
+            "code": "connection-limit",
+            "typeSlug": "number",
+            "value": "45",
+            "featureValue": 45
+          },
+          {
+            "name": "Metrics",
+            "code": "metrics",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "Memory",
+            "code": "memory",
+            "typeSlug": "bytes",
+            "value": "512 MB",
+            "featureValue": 536870912
+          }
+        ]
+      },
+      {
+        "id" : "plan_9b4505e7-ac36-4caa-ac7d-9e11b6a26b15",
+        "name": "XL Small Space",
+        "price": 328,
+        "features": [
+          {
+            "name": "Max DB size",
+            "code": "max-db-size",
+            "typeSlug": "bytes",
+            "value": "80 GB",
+            "featureValue": 85899345920
+          },
+          {
+            "name": "vCPUS",
+            "code": "cpu",
+            "typeSlug": "number",
+            "value": "8",
+            "featureValue": 8
+          },
+          {
+            "name": "Max connection limit",
+            "code": "connection-limit",
+            "typeSlug": "number",
+            "value": "750",
+            "featureValue": 750
+          },
+          {
+            "name": "Memory",
+            "code": "memory",
+            "typeSlug": "bytes",
+            "value": "16 GB",
+            "featureValue": 17179869184
+          },
+          {
+            "name": "Backups",
+            "code": "backup",
+            "typeSlug": "object",
+            "value": "Daily - 7 Retained",
+            "featureValue": ""
+          },
+          {
+            "name": "Metrics",
+            "code": "metrics",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "PostGIS",
+            "code": "postgis",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "Type",
+            "code": "type-shared",
+            "typeSlug": "boolean-shared",
+            "value": "Dedicated",
+            "featureValue": false
+          },
+          {
+            "name": "Logs",
+            "code": "logs",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          },
+          {
+            "name": "Migration Tool",
+            "code": "migration",
+            "typeSlug": "boolean",
+            "value": "Yes",
+            "featureValue": true
+          }
+        ]
+      }
+    ],
+    "features": [
+      {
+        "name": "vCPUS",
+        "code": "cpu",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Type",
+        "code": "type-shared",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Migration Tool",
+        "code": "migration",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Logs",
+        "code": "logs",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Memory",
+        "code": "memory",
+        "type": "FILESIZE"
+      },
+      {
+        "name": "PostGIS",
+        "code": "postgis",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Max connection limit",
+        "code": "connection-limit",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Max DB size",
+        "code": "max-db-size",
+        "type": "FILESIZE"
+      },
+      {
+        "name": "Backups",
+        "code": "backup",
+        "type": "NUMBER"
+      },
+      {
+        "name": "Metrics",
+        "code": "metrics",
+        "type": "NUMBER"
+      }
+    ]
+}

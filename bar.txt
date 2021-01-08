@@ -1,0 +1,21 @@
+_getFeatureName (featureCode) {
+    return ({
+      'backup': i18n('foo.backup'),
+      'connection-limit': i18n('foo.connection-limit'),
+      'cpu': i18n('foo.cpu'),
+      'database': i18n('foo.database'),
+      'disk-size': i18n('foo.disk-size'),
+      'encryption': i18n('foo.encryption'),
+      'isolation': i18n('foo.isolation'),
+      'logs': i18n('foo.logs'),
+      'max-db-size': i18n('foo.max-db-size'),
+      'memory': i18n('foo.memory'),
+      'metrics': i18n('foo.metrics'),
+      'migration': i18n('foo.migration'),
+      'mount': i18n('foo.mount'),
+      'node': i18n('foo.node'),
+      'postgis': i18n('foo.postgis'),
+      'type-shared': i18n('foo.type-shared'),
+      'mongo-version': i18n('foo.mongo-version'),
+    })[featureCode];
+  }

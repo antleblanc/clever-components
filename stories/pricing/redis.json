@@ -1,0 +1,176 @@
+{
+  "plans": [
+    {
+      "id" : "plan_964e2ebf-5606-471f-8ec7-7f79264015d9",
+      "name": "S",
+      "price": 8.67,
+      "features": [
+        {
+          "name": "Connection limit",
+          "code": "connection-limit",
+          "typeSlug": "number",
+          "value": "100",
+          "featureValue": 180
+        },
+        {
+          "name": "Databases",
+          "code": "database",
+          "typeSlug": "number",
+          "value": "100",
+          "featureValue": 100
+        },
+        {
+          "name": "Size",
+          "code": "disk-size",
+          "typeSlug": "bytes",
+          "value": "100MB",
+          "featureValue": 104857600
+        },
+        {
+          "name": "Isolation",
+          "code": "isolation",
+          "typeSlug": "boolean-shared",
+          "value": "Dedicated",
+          "featureValue": false
+        },
+        {
+          "name": "Type",
+          "code": "type-shared",
+          "typeSlug": "boolean-shared",
+          "value": "Dedicated",
+          "featureValue": false
+        },
+        {
+          "name": "CPU",
+          "code": "cpu",
+          "typeSlug": "number",
+          "value": "1 vCPU",
+          "featureValue": 1
+        }
+      ]
+    },
+    {
+      "id": "plan_24b6f0ca-18b8-44af-a9aa-9618a288048a",
+      "name": "XXL",
+      "price": 190.71,
+      "features": [
+        {
+          "name": "Connection limit",
+          "code": "connection-limit",
+          "typeSlug": "number",
+          "value": "500",
+          "featureValue": 500
+        },
+        {
+          "name": "Databases",
+          "code": "database",
+          "typeSlug": "number",
+          "value": "100",
+          "featureValue": 100
+        },
+        {
+          "name": "Isolation",
+          "code": "isolation",
+          "typeSlug": "boolean-shared",
+          "value": "Dedicated",
+          "featureValue": false
+        },
+        {
+          "name": "Size",
+          "code": "disk-size",
+          "typeSlug": "bytes",
+          "value": "2500MB",
+          "featureValue": 2684354560
+        },
+        {
+          "name": "Type",
+          "code": "type-shared",
+          "typeSlug": "boolean-shared",
+          "value": "Dedicated",
+          "featureValue": false
+        },
+        {
+          "name": "CPU",
+          "code": "cpu",
+          "typeSlug": "number",
+          "value": "2 vCPUs",
+          "featureValue": 2
+        }
+      ]
+    },
+    {
+      "id" : "plan_524805d6-d1e2-470b-a849-1e689c1958ca",
+      "name": "XL",
+      "price": 78.08,
+      "features": [
+        {
+          "name": "Isolation",
+          "code": "isolation",
+          "typeSlug": "boolean-shared",
+          "value": "Dedicated",
+          "featureValue": false
+        },
+        {
+          "name": "Connection limit",
+          "code": "connection-limit",
+          "typeSlug": "number",
+          "value": "500",
+          "featureValue": 500
+        },
+        {
+          "name": "Databases",
+          "code": "database",
+          "typeSlug": "number",
+          "value": "100",
+          "featureValue": 100
+        },
+        {
+          "name": "Size",
+          "code": "disk-size",
+          "typeSlug": "bytes",
+          "value": "1000MB",
+          "featureValue": 1048576000
+        },
+        {
+          "name": "Type",
+          "code": "type-shared",
+          "typeSlug": "boolean-shared",
+          "value": "Dedicated",
+          "featureValue": false
+        },
+        {
+          "name": "CPU",
+          "code": "cpu",
+          "typeSlug": "number",
+          "value": "1 vCPU",
+          "featureValue": 1
+        }
+      ]
+    }],
+  "features": [
+    {
+      "name": "Isolation",
+      "code": "isolation"
+    },
+    {
+      "name": "Type",
+      "code": "type-shared"
+    },
+    {
+      "name": "Databases",
+      "code": "database"
+    },
+    {
+      "name": "CPU",
+      "code": "cpu"
+    },
+    {
+      "name": "Connection limit",
+      "code": "connection-limit"
+    },
+    {
+      "name": "Size",
+      "code": "disk-size"
+    }
+  ]
+}
